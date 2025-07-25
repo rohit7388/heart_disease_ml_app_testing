@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Heart Disease Prediction</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 50px; }
+    label { display: inline-block; width: 200px; }
+    input { width: 100px; margin-bottom: 10px; }
+    .result { margin-top: 20px; font-size: 1.2em; font-weight: bold; }
+  </style>
 </head>
 <body>
   <h1>Heart Disease Prediction</h1>
   <form method="post" action="/predict">
     {% for i in range(13) %}
-      <label>Feature {{ i+1 }}: </label>
-      <input type="text" name="{{ i }}" required><br><br>
+      <label>Feature {{ i+1 }}:</label>
+      <input type="text" name="{{ i }}" placeholder="Enter value" required><br>
     {% endfor %}
-    <input type="submit" value="Predict">
+    <button type="submit">Predict</button>
   </form>
   {% if prediction %}
-    <h2>Prediction: {{ prediction }}</h2>
+    <div class="result">Prediction: {{ prediction }}</div>
   {% endif %}
 </body>
 </html>
